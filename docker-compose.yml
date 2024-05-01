@@ -1,0 +1,22 @@
+version: '3'
+services:
+   web:
+      build: 
+         context: .
+         dockerfile: Dockerfile.dev
+      ports:
+         -3000:3000
+      volumes:
+         - /app/node_modules
+         - .:/app
+
+# version: This specifies the version of the Docker Compose file format. Version '3' supports Docker 1.13.0 and above.
+# services: Defines the services (containers) to be created.
+# web: This is the name of the service.
+# build:
+# context: Specifies the build context (i.e., the path to the build directory). Here, it’s the current directory (.).
+# dockerfile: Points to a specific Dockerfile to use, named Dockerfile.dev.
+# ports: Maps the host's port to the container's port. Here, port 3000 on the host is mapped to port 3000 on the container, which is typical for a web application like a Node.js app.
+# volumes: Mounts host paths or named volumes into the container.
+# /app/node_modules: Ensures that the node_modules directory from the container is used, and it is not overwritten by the mount from the host.
+# .: /app: Maps the current directory (.) on the host to /app inside the container. This allows for live code reloading by synchronizing the files between the host and the container.
