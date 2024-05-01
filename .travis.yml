@@ -1,0 +1,9 @@
+sudo: required
+services:
+   - docker
+before_install:
+   - docker build -t otonye77 -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true otonye77 npm run test
+
